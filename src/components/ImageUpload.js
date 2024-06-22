@@ -8,8 +8,7 @@ export default function ImageUpload() {
   return (
     <>
     <Navbar/>
-    <Intro/>
-    <IngredientInputPage />
+ 
 
     </>
   )

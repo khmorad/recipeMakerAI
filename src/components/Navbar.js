@@ -12,8 +12,8 @@ const Navbar = () => {
         <a href="#"><img src="https://1000logos.net/wp-content/uploads/2023/02/ChatGPT-Logo.png" alt="Logo" style={logoStyle} /></a>
       </div>
       <ul className="nav-links">
-        <li><a href="/upload">Home</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/upload">upload images</a></li>
         <li><a href="#">Services</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
