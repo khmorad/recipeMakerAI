@@ -16,8 +16,12 @@ export default function IngredientInput({ onIngredientsSubmit }) {
   };
 
   const handleSubmit = () => {
+    console.log("Submitting ingredients:", ingredients);
+    console.log("onIngredientsSubmit type:", typeof onIngredientsSubmit);
     onIngredientsSubmit(ingredients);
   };
+
+  console.log("IngredientInput props:", { onIngredientsSubmit });
 
   return (
     <div>

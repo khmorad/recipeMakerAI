@@ -3,7 +3,10 @@ import IngredientInput from "./IngredientInput";
 
 export default function IngredientInputPage() {
   const [response, setResponse] = useState("");
-  const apiKey = "sk-proj-J2UoqN2lfsS8UsLuCbkiT3BlbkFJijtWlXH5p3ViWUTcw8C6";
+  const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
+
+  // Log the API key to ensure it is correctly fetched from .env
+  console.log("API Key:", apiKey);
 
   async function processMessageToChatGPT(ingredients) {
     const promptMessage = {
@@ -23,7 +26,7 @@ export default function IngredientInputPage() {
         {
           method: "POST",
           headers: {
-            Authorization: "Bearer " + apiKey, // Replace with your actual API key
+            Authorization: "Bearer " + apiKey,
             "Content-Type": "application/json",
           },
           body: JSON.stringify(apiRequestBody),
@@ -37,21 +40,22 @@ export default function IngredientInputPage() {
         role: "incoming",
         content: data.choices[0].message.content,
       };
-      console.log(chatbotResponse.content); // Logging the chatbot response content
-      setResponse(chatbotResponse.content); // Updating state to reflect the response
+      console.log("Chatbot response:", chatbotResponse.content);
+      setResponse(chatbotResponse.content);
     } catch (error) {
       console.error("Error fetching response from OpenAI API:", error);
     }
   }
 
   const handleIngredientsSubmit = async (submittedIngredients) => {
+    console.log("Submitted ingredients:", submittedIngredients);
     await processMessageToChatGPT(submittedIngredients);
   };
 
   return (
     <div>
       <IngredientInput onIngredientsSubmit={handleIngredientsSubmit} />
-      {response && <RecipeList possibleMeals={response} />}
+      {response && <div>Response: {response}</div>}
     </div>
   );
 }
