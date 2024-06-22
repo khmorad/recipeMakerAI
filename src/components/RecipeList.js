@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-const APP_ID = "";
-const APP_KEY = "";
+const APP_ID = process.env.REACT_APP_EDAMAM_APP_ID;
+const APP_KEY = process.env.REACT_APP_EDAMAM_API_KEY;
 
 export default function RecipeList({ ingredients }) {
   const [recipes, setRecipes] = useState([]);
@@ -9,6 +9,7 @@ export default function RecipeList({ ingredients }) {
   useEffect(() => {
     async function fetchRecipes() {
       try {
+        console.log(APP_KEY)
         // Join ingredients into a single string for querying
         const query = ingredients.join(",");
         const encodedQuery = encodeURIComponent(query.trim());
@@ -45,6 +46,7 @@ export default function RecipeList({ ingredients }) {
 
   return (
     <div>
+      {APP_KEY}
       <h2>Recipes based on ingredients:</h2>
       <ul>
         {recipes.map((recipe, index) => (
