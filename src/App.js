@@ -8,9 +8,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/input" element={<IngredientInput />} />
       <Route path="/upload" element={<ImageUpload />} />
-      <Route path="/recipes" element={<RecipeList />} />
     </Routes>
   );
 }
