@@ -6,9 +6,10 @@ export default function Intro() {
   const introStyle = {
     display: 'flex',
     justifyContent: 'center',
-    width: '60%',  // Set the width to 60%
+    width: '100%',  // Set the width to 60%
     margin: '0 auto',  // Center the div horizontally
-    paddingTop: '20px' // Add padding top for spacing
+    paddingTop: '20px', // Add padding top for spacing
+    boxShadow: 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px'
   };
 
   const typeAnimationStyle = {
@@ -18,6 +19,11 @@ export default function Intro() {
     marginBottom: '50px',
   };
 
+  const imageStyling = {
+
+    width: '100%',
+    height: 'auto'
+  }
   return (
     <div style={{ textAlign: 'center' }}>
             <div style={typeAnimationStyle}>
@@ -38,7 +44,7 @@ export default function Intro() {
         />
       </div>
       <div style={introStyle}>
-        <img src={introImage} alt="Description of the image" style={{ width: '180%', height: 'auto' }} />
+        <img src={introImage} alt="Description of the image" style={imageStyling} />
       </div>
 
     </div>
