@@ -5,6 +5,7 @@ import ImageUpload from "./components/ImageUpload";
 import Home from "./components/Home";
 import RecipeList from "./components/RecipeList";
 function App() {
+  console.log(process.env.REACT_APP_API_KEY)
   return (
     <Routes>
       <Route path="/" element={<Home />} />
