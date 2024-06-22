@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "../stylings/RecipeList.css"; // Import the CSS file for styling
 
-const APP_ID = ""; // Replace with your actual App ID
-const APP_KEY = ""; // Replace with your actual App Key
+const APP_ID = process.env.REACT_APP_EDAMAM_API_ID;
+const APP_KEY = process.env.REACT_APP_EDAMAM_API_KEY;
 
 export default function RecipeList({ ingredients }) {
   const [recipes, setRecipes] = useState([]);
