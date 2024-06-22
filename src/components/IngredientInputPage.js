@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import IngredientInput from "./IngredientInput";
+// import RecipeList from "./RecipeList";
 
 export default function IngredientInputPage() {
   const [response, setResponse] = useState("");
@@ -26,7 +27,9 @@ export default function IngredientInputPage() {
         {
           method: "POST",
           headers: {
-            Authorization: "Bearer " + apiKey,
+            Authorization:
+              "Bearer " +
+              "sk-proj-jR9Ot0Pilm5VPsLCj8XDT3BlbkFJCgCwo3JYoufiYVBcEUt2",
             "Content-Type": "application/json",
           },
           body: JSON.stringify(apiRequestBody),
@@ -56,6 +59,7 @@ export default function IngredientInputPage() {
     <div>
       <IngredientInput onIngredientsSubmit={handleIngredientsSubmit} />
       {response && <div>Response: {response}</div>}
+      {/* {response && <RecipeList possibleMeals={response} />} */}
     </div>
   );
 }
