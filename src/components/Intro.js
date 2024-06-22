@@ -6,10 +6,12 @@ export default function Intro() {
   const introStyle = {
     display: 'flex',
     justifyContent: 'center',
-    width: '100%',  // Set the width to 60%
     margin: '0 auto',  // Center the div horizontally
-    paddingTop: '20px', // Add padding top for spacing
-    boxShadow: 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px'
+    boxShadow: 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px',
+    maxHeight: '400px',  // Set maximum height for the container
+    overflow: 'hidden',  // Hide overflow content beyond maxHeight
+    maxWidth: '800px',
+    borderRadius: '4px'
   };
 
   const typeAnimationStyle = {
@@ -20,17 +22,17 @@ export default function Intro() {
   };
 
   const imageStyling = {
+    maxWidth: '100%',  // Set maximum width for the image to ensure it fits within container
+    height: 'auto',   // Maintain aspect ratio
+  };
 
-    width: '100%',
-    height: 'auto'
-  }
   return (
     <div style={{ textAlign: 'center' }}>
-            <div style={typeAnimationStyle}>
+      <div style={typeAnimationStyle}>
         <TypeAnimation
           sequence={[
             'Transform your ingredients into delicious recipes with our interactive tool!',
-            1000, // wait 1s before replacing "Mice" with "Hamsters"
+            1000,
             'Enter your ingredients and discover personalized recipes.',
             1000,
             'Explore flavorful recipes based on your unique ingredients.',
@@ -46,7 +48,6 @@ export default function Intro() {
       <div style={introStyle}>
         <img src={introImage} alt="Description of the image" style={imageStyling} />
       </div>
-
     </div>
   );
 }
