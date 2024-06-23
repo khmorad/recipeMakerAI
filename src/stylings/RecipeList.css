@@ -1,6 +1,6 @@
 
 .recipieContainer{
-  background-color: rgb(247, 247, 247);
+  background-color: rgb(255, 255, 255);
   margin: 80px;
   padding: 20px;
   text-align: center;
@@ -19,6 +19,9 @@
   transition: transform 0.2s;
 }
 
+li{
+  list-style-type: none; /* Remove default bullets */
+}
 .recipe-card:hover {
   transform: scale(1.01);
 }
@@ -67,10 +70,25 @@
   position: relative;
 }
 
+
+.recipe-card .ingredients-list ul {
+  list-style-type: none; /* Remove default bullets */
+  padding: 0;
+  margin: 0;
+}
 .recipe-card .ingredients-list ul li:before {
-  content: "•";
+  content: ""; /* Remove the bullet */
   position: absolute;
   left: 0;
-  color: #555;
 }
+.ingrendient{
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;  margin-bottom: 10px;
+  list-style-type: none; /* Remove default bullets */
+  margin-right: 8px;
+  transition: 0.4s;
 
+}
+.ingrendient:hover{
+ 
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;}
