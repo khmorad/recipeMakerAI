@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import IngredientInput from "./IngredientInput";
 import RecipeList from "./RecipeList"; // Import RecipeList component
-
 export default function IngredientInputPage() {
+  
   const [ingredients, setIngredients] = useState([]);
 
   const handleIngredientsSubmit = (submittedIngredients) => {
@@ -14,7 +14,6 @@ export default function IngredientInputPage() {
   return (
     <div>
       <IngredientInput onIngredientsSubmit={handleIngredientsSubmit} />
-      {/* Render RecipeList with ingredients directly */}
       {ingredients.length > 0 && <RecipeList ingredients={ingredients} />}
     </div>
   );
