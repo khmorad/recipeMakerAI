@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import FileBase64 from "react-file-base64";
 import "../stylings/ImageUpload.css";
 import Navbar from "./Navbar";
+import RecipeList from "./RecipeList"; // Import RecipeList component
 
-const API_URL = "http://localhost:5000/api/upload";
+const API_URL = "http://127.0.0.1:5000/api/upload";
 
 export default function UploadImage() {
   const [images, setImages] = useState([]);
@@ -44,41 +45,33 @@ export default function UploadImage() {
   return (
     <div>
       <Navbar />
-    <div className="upload-image-container">
-      
-      <h2 className="upload-image-title">Upload Images of Ingredients</h2>
-      <div className="file-upload-container">
-        <FileBase64 multiple={true} onDone={handleFileUpload} />
-      </div>
-      <div className="uploaded-images-container">
-        {images.map((image, index) => (
-          <div key={index} className="uploaded-image">
-            <img
-              src={image}
-              alt={`Uploaded ingredient ${index}`}
-              className="uploaded-image-content"
-            />
-          </div>
-        ))}
-      </div>
-      <button
-        className="submit-button"
-        onClick={handleSubmit}
-        disabled={images.length === 0 || submitting}
-      >
-        {submitting ? "Submitting..." : "Submit"}
-      </button>
-      {detectedIngredients.length > 0 && (
-        <div className="detected-ingredients">
-          <h3>Detected Ingredients:</h3>
-          <ul>
-            {detectedIngredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
-            ))}
-          </ul>
+      <div className="upload-image-container">
+        <h2 className="upload-image-title">Upload Images of Ingredients</h2>
+        <div className="file-upload-container">
+          <FileBase64 multiple={true} onDone={handleFileUpload} />
         </div>
-      )}
-    </div>
+        <div className="uploaded-images-container">
+          {images.map((image, index) => (
+            <div key={index} className="uploaded-image">
+              <img
+                src={image}
+                alt={`Uploaded ingredient ${index}`}
+                className="uploaded-image-content"
+              />
+            </div>
+          ))}
+        </div>
+        <button
+          className="submit-button"
+          onClick={handleSubmit}
+          disabled={images.length === 0 || submitting}
+        >
+          {submitting ? "Submitting..." : "Submit"}
+        </button>
+        {detectedIngredients.length > 0 && (
+          <RecipeList ingredients={detectedIngredients} />
+        )}
+      </div>
     </div>
   );
 }

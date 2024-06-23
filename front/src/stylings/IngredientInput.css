@@ -2,69 +2,67 @@
 
 .container {
   margin: 50px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f0f0f0;
-    margin-top: 50px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  }
-  
-  .input-group {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f7f7;
+  margin-top: 50px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.045);
+  width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.205) 0px 5px 15px;
+}
 
-    margin-bottom: 10px;
-  }
+.input-group {
+  display: flex;
 
-  .ingredient-input {
-    width: 100%;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 10px;
-  }
-  
-  .add-button,
-  .submit-button {
-    padding: 8px 12px;
-    font-size: 14px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-bottom: 10px;
-  }
-  
-  .submit-button {
-    background-color: #008CBA;
-  }
-  
-  .ingredient-list {
-    list-style-type: none;
-    padding: 0;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .ingredient-list li {
-    background-color: #fff;
-    padding: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-  }
-  .ingredient-list{
-    background-color: #ccc;
-    padding-left: 8px;
-    padding-top: 12px;
+  margin-bottom: 10px;
+}
 
-  }
-  
+.ingredient-input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #cccccca4;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.add-button,
+.submit-button {
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: #58c98f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.submit-button {
+  background-color: #1fa6d3fd;
+}
+
+.ingredient-list {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ingredient-list li {
+  background-color: #fff;
+  padding: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.049);
+}
+.ingredient-list {
+  background-color: #cccccc2a;
+  padding-left: 8px;
+  padding-top: 12px;
+}
