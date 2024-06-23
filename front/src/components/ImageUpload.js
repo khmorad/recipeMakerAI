@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import FileBase64 from "react-file-base64";
-import "../stylings/ImageUpload.css"; // Import your CSS file
+import "../stylings/ImageUpload.css";
 import Navbar from "./Navbar";
 
-const API_URL = "http://localhost:5000/api/upload"; // Adjust URL as per your Flask backend
+const API_URL = "http://localhost:5000/api/upload";
 
-export default function UploadImage({ setIngredients }) {
+export default function UploadImage() {
   const [images, setImages] = useState([]);
-  const [submitting, setSubmitting] = useState(false); // State to manage submitting status
+  const [submitting, setSubmitting] = useState(false);
+  const [detectedIngredients, setDetectedIngredients] = useState([]);
 
   const handleFileUpload = (files) => {
     const newImages = files.map((file) => file.base64);
@@ -15,16 +16,15 @@ export default function UploadImage({ setIngredients }) {
   };
 
   const handleSubmit = async () => {
-    setSubmitting(true); // Set submitting to true when starting upload
+    setSubmitting(true);
 
     try {
-      // Assuming images is an array of base64 encoded strings
       const response = await fetch(API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ images }), // Send images to backend
+        body: JSON.stringify({ images }),
       });
 
       if (!response.ok) {
@@ -32,19 +32,20 @@ export default function UploadImage({ setIngredients }) {
       }
 
       const data = await response.json();
-      setIngredients(data.ingredients); // Update parent component with detected ingredients
-      // Clear images after successful upload
-      setImages([]);
+      setDetectedIngredients(data.ingredients); // Set detected ingredients from API response
+      setImages([]); // Clear uploaded images after successful upload
     } catch (error) {
       console.error("Error uploading images:", error);
     } finally {
-      setSubmitting(false); // Reset submitting status
+      setSubmitting(false);
     }
   };
 
   return (
-    <div className="upload-image-container">
+    <div>
       <Navbar />
+    <div className="upload-image-container">
+      
       <h2 className="upload-image-title">Upload Images of Ingredients</h2>
       <div className="file-upload-container">
         <FileBase64 multiple={true} onDone={handleFileUpload} />
@@ -67,6 +68,17 @@ export default function UploadImage({ setIngredients }) {
       >
         {submitting ? "Submitting..." : "Submit"}
       </button>
+      {detectedIngredients.length > 0 && (
+        <div className="detected-ingredients">
+          <h3>Detected Ingredients:</h3>
+          <ul>
+            {detectedIngredients.map((ingredient, index) => (
+              <li key={index}>{ingredient}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
     </div>
   );
 }
