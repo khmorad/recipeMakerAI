@@ -1,11 +1,12 @@
 
-.recipieContainer{
+.recipeContainer{
   background-color: rgb(255, 255, 255);
   margin-top:40px;
   margin-right: 80px;
   margin-left: 80px;
   padding: 20px;
   text-align: center;
+ 
 }
 .recipe-grid {
   display: grid;
@@ -14,7 +15,7 @@
   padding: 16px;
 }
 
-.recipe-card {
+.recipe-card{
   border: 1px solid #e6e6e6;
   border-radius: 8px;
   overflow: hidden;
@@ -83,16 +84,17 @@ li{
   position: absolute;
   left: 0;
 }
-.ingrendient{
+.ingredient{
   background-color: rgb(255, 255, 255);
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;  list-style-type: none; /* Remove default bullets */
   margin-right: 8%;
   transition: 0.s;
   margin-bottom: 10px;
+  transition: 0.2 s
 
 }
-.ingrendient:hover{
+.ingredient:hover{
   box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset; 
-  background-color: rgb(227, 243, 243);
+  background-color: rgb(201, 240, 240);
 }
