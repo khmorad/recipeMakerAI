@@ -2,14 +2,14 @@ import React from 'react';
 import '../stylings/Navbar.css'
 const Navbar = () => {
   const logoStyle = {
-    height: '40px',
+    height: '60px',
     width: 'auto',
     borderRadius: '50%',
   }
   return (
     <nav className="navbar">
       <div className="logo">
-        <a href="/"><img src="https://1000logos.net/wp-content/uploads/2023/02/ChatGPT-Logo.png" alt="Logo" style={logoStyle} /></a>
+        <a href="/"><img src="/AIHackLogo.png" alt="Logo" style={logoStyle} /></a>
       </div>
       <ul className="nav-links">
         <li><a href="/">Home</a></li>
