@@ -46,7 +46,7 @@ export default function Intro() {
         />
       </div>
       <div style={introStyle}>
-        <img src={introImage} alt="Description of the image" style={imageStyling} />
+        <img src="https://www.bellavistaeats.com/wp-content/uploads/2019/10/AdobeStock_310893438-scaled.jpeg" alt="Description of the image" style={imageStyling} />
       </div>
     </div>
   );

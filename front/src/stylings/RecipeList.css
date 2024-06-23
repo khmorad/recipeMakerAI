@@ -16,10 +16,11 @@
 }
 
 .recipe-card{
-  border: 1px solid #e6e6e6;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.2s;
+  background-color: #ffffff;
 }
 
 li{
