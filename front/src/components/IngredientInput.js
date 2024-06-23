@@ -24,6 +24,7 @@ export default function IngredientInput({ onIngredientsSubmit }) {
 
   return (
     <div className="container">
+      <div></div>
       <input
         type="text"
         value={ingredient}
