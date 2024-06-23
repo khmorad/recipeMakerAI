@@ -121,7 +121,7 @@ export default function RecipeList({ ingredients }) {
                 Calories: {Math.round(recipe.calories)} |
                 {openAiResponses[recipe.label] !== undefined && (
                   <span>
-                    <FontAwesomeIcon icon={faClock} />{" "}
+                    {" "}<FontAwesomeIcon icon={faClock} />{" "}
                     {openAiResponses[recipe.label] + " min"}
                   </span>
                 )}
