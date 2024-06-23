@@ -1,3 +1,10 @@
+
+.recipieContainer{
+  background-color: rgb(247, 247, 247);
+  margin: 80px;
+  padding: 20px;
+  text-align: center;
+}
 .recipe-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -13,7 +20,7 @@
 }
 
 .recipe-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
 }
 
 .recipe-card a {
@@ -37,3 +44,33 @@
   font-size: 1em;
   color: #555;
 }
+
+
+.recipe-card .ingredients-list {
+  margin: 16px;
+}
+
+.recipe-card .ingredients-list p {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.recipe-card .ingredients-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recipe-card .ingredients-list ul li {
+  margin-bottom: 4px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.recipe-card .ingredients-list ul li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #555;
+}
+
