@@ -1,7 +1,9 @@
 
 .recipieContainer{
   background-color: rgb(255, 255, 255);
-  margin: 80px;
+  margin-top:40px;
+  margin-right: 80px;
+  margin-left: 80px;
   padding: 20px;
   text-align: center;
 }
@@ -86,7 +88,7 @@ li{
   box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;  margin-bottom: 10px;
   list-style-type: none; /* Remove default bullets */
   margin-right: 8px;
-  transition: 0.4s;
+  transition: 0.s;
 
 }
 .ingrendient:hover{
