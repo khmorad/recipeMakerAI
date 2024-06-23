@@ -8,7 +8,7 @@ export default function Intro() {
     justifyContent: 'center',
     margin: '0 auto',  // Center the div horizontally
     boxShadow: 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px',
-    maxHeight: '400px',  // Set maximum height for the container
+    maxHeight: '700px',  // Set maximum height for the container
     overflow: 'hidden',  // Hide overflow content beyond maxHeight
     maxWidth: '800px',
     borderRadius: '4px'
