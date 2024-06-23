@@ -1,0 +1,35 @@
+/* UploadImage.css */
+
+.upload-image-container {
+  margin: 20px auto; /* Center-align and add vertical margin */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  width: 80%; /* Set width to 80% of the viewport */
+  max-width: 1200px; /* Limit maximum width to 1200px */
+  box-sizing: border-box; /* Ensures padding and border are included in width */
+}
+
+.uploaded-images-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Gap between images */
+  justify-content: flex-start; /* Start alignment for flex */
+}
+
+.uploaded-image {
+  width: 200px; /* Fixed width for each image container */
+  height: 200px; /* Fixed height for each image container */
+  overflow: hidden; /* Prevents images from overflowing */
+  position: relative; /* Ensures image corners are rounded */
+  border-radius: 5px; /* Adds rounded corners to the image */
+}
+
+.uploaded-image img {
+  width: 100%; /* Ensures image occupies the full container width */
+  height: 100%; /* Ensures image occupies the full container height */
+  display: block; /* Removes default inline styling */
+  border-radius: 5px; /* Adds rounded corners to the image */
+  object-fit: cover; /* Maintains aspect ratio and covers the container */
+}
