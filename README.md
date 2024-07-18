@@ -1,6 +1,9 @@
 # RecipeMakeAI
 
 RecipeMakeAI is a web application that allows users to input ingredients in a search bar to generate recipes based on those ingredients. The application also utilizes Flask and TensorFlow for object detection to identify ingredients from images. Additionally, it uses the OpenAI API to provide time estimates and estimated calories for each recipe. The recipes themselves are fetched from the Edamam API.
+## Demo
+
+live [Demo](https://youtu.be/erw31rS5tag) of this project
 
 ## Team Members
 - Khashayar Moradpour
