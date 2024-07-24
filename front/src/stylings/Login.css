@@ -1,0 +1,159 @@
+* {
+  border: none;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fafafa;
+  height: 100vh;
+}
+
+main {
+  height: 100vh;
+  margin: auto;
+  max-width: 935px;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  margin: 20px 0;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Flex rules */
+.flex {
+  display: flex;
+}
+
+.direction-column {
+  flex-direction: column;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.panel {
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+#auth {
+  max-width: 350px;
+}
+
+/* Login section */
+
+button {
+  border-color: None;
+}
+
+.signup-link {
+  margin-left: 5px; /* Adjust the value as needed */
+  color: #0094f6c7;
+  font-weight: bold;
+}
+
+.signup-link:hover {
+  color: #0073e6; /* Darker blue color on hover */
+}
+
+.register,
+form {
+  padding: 30px 20px;
+}
+
+form .sr-only {
+  display: none;
+}
+
+form input {
+  background-color: #fafafa;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  color: #808080;
+  margin-bottom: 8px;
+  padding: 10px;
+  width: 100%;
+}
+
+form input::placeholder {
+  color: #808080;
+}
+
+form input:focus {
+  border: 1px solid #808080;
+  outline: none;
+}
+
+form button {
+  background-color: #0094f6c7;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  height: 35px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+/* Register section */
+.register * {
+  font-size: 14px;
+}
+
+.welcome-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.welcome-message h1 {
+  color: #58c98f;
+}
+
+.nav-right {
+  margin-left: auto;
+  color: white;
+  font-size: 18px;
+}
+
+.welcome-message {
+  color: green;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.welcome-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #58c98f;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  z-index: 1001; /* Make sure it appears on top of other elements */
+}

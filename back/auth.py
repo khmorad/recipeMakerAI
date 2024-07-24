@@ -5,14 +5,18 @@ from datetime import datetime
 from flask_cors import CORS
 import os
 from dotenv import load_dotenv
+import logging
+
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '021888274047Mm!'
-app.config['MYSQL_DB'] = 'recipemaker'
+# Configure MySQL using environment variables
+app.config['MYSQL_HOST'] = os.getenv('MYSQL_HOST')
+app.config['MYSQL_USER'] = os.getenv('MYSQL_USER')
+app.config['MYSQL_PASSWORD'] = os.getenv('MYSQL_PASSWORD')
+app.config['MYSQL_DB'] = os.getenv('MYSQL_DB')
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor' # Makes database into dictionary format - userful because it is in JSON format
 
 mysql = MySQL(app)

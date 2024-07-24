@@ -1,6 +1,6 @@
 import logging
 import os
-from flask import Flask, request, jsonify
+from back.main import Flask, request, jsonify
 import base64
 import cv2
 import numpy as np
