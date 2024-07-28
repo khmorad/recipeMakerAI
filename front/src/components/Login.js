@@ -9,6 +9,7 @@ export default function Login({ onLogin }) {
   const [loginError, setLoginError] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   const [showWelcomeCard, setShowWelcomeCard] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false); // State to toggle password visibility
 
   useEffect(() => {
     // Fetch users from the server
@@ -37,8 +38,12 @@ export default function Login({ onLogin }) {
       }, 3000); // Hide welcome card after 3 seconds
     } else {
       setLoggedIn(false);
-      setLoginError("Invalid email or password");
+      setLoginError("Invalid username or password");
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
   };
 
   return (
@@ -60,14 +65,23 @@ export default function Login({ onLogin }) {
         <label htmlFor="password" className="sr-only">
           Password
         </label>
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <div className="password-container">
+          <input
+            name="password"
+            type={passwordVisible ? "text" : "password"} // Toggle password visibility
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button
+            type="button"
+            className="toggle-password"
+            onClick={togglePasswordVisibility}
+          >
+            {passwordVisible ? "Hide" : "Show"} {/* Toggle button text */}
+          </button>
+        </div>
         <button type="submit">Log In</button>
         {loginError && <p style={{ color: "red" }}>{loginError}</p>}
       </form>

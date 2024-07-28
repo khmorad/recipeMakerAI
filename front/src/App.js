@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ImageUpload from "./components/ImageUpload";
 import Home from "./components/Home";
-import SignUp from "./components/Signup";
+import SignUp from "./components/SignUp";
 
 // Links separate page (similar to href in html)
 function App() {

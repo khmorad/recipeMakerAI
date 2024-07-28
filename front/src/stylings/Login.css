@@ -63,7 +63,6 @@ ul {
 }
 
 /* Login section */
-
 button {
   border-color: None;
 }
@@ -114,6 +113,32 @@ form button {
   height: 35px;
   margin-top: 10px;
   width: 100%;
+}
+
+/* Password visibility toggle */
+.password-container {
+  position: relative;
+}
+
+.password-container input {
+  width: 100%;
+  padding: 10px 40px 10px 10px; /* Add padding on the right for the button */
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  background-color: #fafafa;
+  color: #808080;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #0094f6c7; /* Match your theme color */
+  font-size: 14px; /* Adjust as needed */
 }
 
 /* Register section */

@@ -55,7 +55,7 @@ def create_user():
         return jsonify({"error": str(e)}), 400
 
 @app.route('/users/<int:user_id>', methods=['DELETE'])
-def delete_customer(user_id):
+def delete_user(user_id):
     try:
         cur = mysql.connection.cursor()
         cur.execute("DELETE FROM Users WHERE UserID = %s", (user_id,))

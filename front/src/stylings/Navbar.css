@@ -46,22 +46,26 @@ body {
 }
 
 /* Styling for the login button */
-.nav-login {
-  margin-left: auto;
+.nav-right {
+  display: flex;
+  align-items: center;
 }
 
-.login-button {
+.login-button,
+.signup-button {
   text-decoration: none;
   color: white;
   font-size: 18px;
-  background-color: #58c98f;
+  background-color: #333;
   padding: 10px 20px;
   border-radius: 5px;
   transition: background-color 0.3s;
+  margin-left: 10px; /* Space between buttons */
 }
 
-.login-button:hover {
-  background-color: #1fa6d3fd;
+.login-button:hover,
+.signup-button:hover {
+  background-color: #7e7e7eda;
 }
 
 /* Modal styles */
@@ -156,4 +160,20 @@ body {
 
 .modal-close:hover {
   background: #d32f2f;
+}
+
+/* Add styling for the signup button */
+.signup-button {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  background-color: #ff9800; /* Orange color for signup */
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-left: 10px;
+  transition: background-color 0.3s;
+}
+
+.signup-button:hover {
+  background-color: #e68900; /* Darker orange on hover */
 }
