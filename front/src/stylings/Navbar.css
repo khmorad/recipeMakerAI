@@ -28,6 +28,7 @@ body {
   display: flex;
   justify-content: center;
   flex: 1;
+  padding-left: 120px;
 }
 
 .nav-links li {
@@ -167,7 +168,7 @@ body {
   text-decoration: none;
   color: white;
   font-size: 18px;
-  background-color: #ff9800; /* Orange color for signup */
+  background-color: None;
   padding: 10px 20px;
   border-radius: 5px;
   margin-left: 10px;
@@ -175,5 +176,5 @@ body {
 }
 
 .signup-button:hover {
-  background-color: #e68900; /* Darker orange on hover */
+  background-color: #8a8a8add; /* Darker orange on hover */
 }

@@ -24,22 +24,29 @@ export default function Login({ onLogin }) {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    // Check if the user exists
-    const user = users.find(
-      (user) => user.Username === userName && user.Password === password
-    );
-    if (user) {
-      setLoggedIn(true);
-      setLoginError("");
-      setShowWelcomeCard(true);
-      setTimeout(() => {
-        setShowWelcomeCard(false);
-        onLogin(userName); // Call onLogin to update Navbar
-      }, 3000); // Hide welcome card after 3 seconds
-    } else {
-      setLoggedIn(false);
-      setLoginError("Invalid username or password");
-    }
+
+    fetch("http://127.0.0.1:5000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ Username: userName, Password: password }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === "Login successful") {
+          setLoggedIn(true);
+          setLoginError("");
+          onLogin(userName); // Call onLogin to update Navbar
+        } else {
+          setLoggedIn(false);
+          setLoginError("Invalid username or password");
+        }
+      })
+      .catch((error) => {
+        console.error("Error during login:", error);
+        setLoginError("An error occurred. Please try again.");
+      });
   };
 
   const togglePasswordVisibility = () => {
@@ -85,11 +92,6 @@ export default function Login({ onLogin }) {
         <button type="submit">Log In</button>
         {loginError && <p style={{ color: "red" }}>{loginError}</p>}
       </form>
-      {showWelcomeCard && (
-        <div className="welcome-card">
-          <p>Welcome, {userName}!</p>
-        </div>
-      )}
       <div className="panel register flex justify-content-center">
         <p>Don't have an account?</p>
         <Link to="/signup" className="signup-link">

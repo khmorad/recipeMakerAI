@@ -5,18 +5,19 @@ import SignUp from "./SignUp"; // Import the SignUp component
 
 const Navbar = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false); // New state for Signup modal
+  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
   const [username, setUsername] = useState("");
 
   const openLoginModal = () => setIsLoginModalOpen(true);
   const closeLoginModal = () => setIsLoginModalOpen(false);
 
-  const openSignupModal = () => setIsSignupModalOpen(true); // Function to open Signup modal
-  const closeSignupModal = () => setIsSignupModalOpen(false); // Function to close Signup modal
+  const openSignupModal = () => setIsSignupModalOpen(true);
+  const closeSignupModal = () => setIsSignupModalOpen(false);
 
   const handleLogin = (userName) => {
     setUsername(userName);
     closeLoginModal();
+    closeSignupModal(); // Close the sign-up modal
   };
 
   const handleLogout = () => {
@@ -43,9 +44,6 @@ const Navbar = () => {
           </li>
           <li>
             <a href="/upload">Upload Images</a>
-          </li>
-          <li>
-            <a href="#">Services</a>
           </li>
           <li>
             <a href="#">Contact</a>
@@ -91,7 +89,7 @@ const Navbar = () => {
             <button className="modal-close" onClick={closeSignupModal}>
               X
             </button>
-            <SignUp />
+            <SignUp onLogin={handleLogin} closeSignupModal={closeSignupModal} />{" "}
           </div>
         </div>
       )}

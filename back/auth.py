@@ -85,6 +85,28 @@ def update_user(user_id):
         return jsonify({"message": "User updated successfully"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+    
+@app.route('/login', methods=['POST'])
+def login():
+    try:
+        cur = mysql.connection.cursor()
+        user_data = request.json
+        username = user_data.get("Username")
+        password = user_data.get("Password")
+
+        # Fetch user with the provided username
+        cur.execute("SELECT * FROM Users WHERE Username = %s", (username,))
+        user = cur.fetchone()
+        cur.close()
+
+        # Check if user exists and password matches
+        if user and user['Password'] == password:
+            return jsonify({"message": "Login successful", "user": user}), 200
+        else:
+            return jsonify({"message": "Invalid username or password"}), 401
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
+
 
 if __name__ == "__main__":
     app.run(debug=True)
