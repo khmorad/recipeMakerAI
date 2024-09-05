@@ -17,6 +17,12 @@ Live [Demo](https://youtu.be/erw31rS5tag) of this project
 - **Recipe Generation**: Fetches recipes based on input ingredients from the Edamam API.
 - **Time Estimate and Calories**: Uses OpenAI API to estimate the time required and the number of calories for each recipe.
 
+## Known Limitations
+
+- **Ingredient Detection**: The current object detection functionality utilizes a YOLO pretrained model, which has limitations in accurately detecting a wide range of ingredients. It performs well with certain ingredients such as carrots, broccoli, and oranges, but struggles with others. We are actively working to improve detection accuracy by fine-tuning a VGG16 model. This process involves combining datasets from Kaggle to create a more comprehensive dataset that includes a broader range of ingredients. The goal is to enhance the model's ability to predict a wider variety of ingredients more reliably.
+
+- **Ongoing Work**: To address these limitations, we are working on a Colab notebook to fine-tune the VGG16 model. You can track the progress and access the notebook here: [Colab Notebook](https://colab.research.google.com/drive/1bT40bcBfwCy1rbB_OFP9M0LJhLYyjVtE?usp=sharing).
+
 ## Technologies Used
 - **Flask**: For the backend web server.
 - **TensorFlow**: For object detection to identify ingredients from images.
@@ -89,13 +95,6 @@ Live [Demo](https://youtu.be/erw31rS5tag) of this project
 3. Commit your changes (`git commit -m 'Add some feature'`).
 4. Push to the branch (`git push origin feature/your-feature-name`).
 5. Create a new Pull Request.
-
-## Known Limitations
-
-- **Ingredient Detection**: The current object detection functionality utilizes a YOLO pretrained model, which has limitations in accurately detecting a wide range of ingredients. It performs well with certain ingredients such as carrots, broccoli, and oranges, but struggles with others. We are actively working to improve detection accuracy by fine-tuning a VGG16 model. This process involves combining datasets from Kaggle to create a more comprehensive dataset that includes a broader range of ingredients. The goal is to enhance the model's ability to predict a wider variety of ingredients more reliably.
-
-- **Ongoing Work**: To address these limitations, we are working on a Colab notebook to fine-tune the VGG16 model. You can track the progress and access the notebook here: [Colab Notebook](https://colab.research.google.com/drive/1bT40bcBfwCy1rbB_OFP9M0LJhLYyjVtE?usp=sharing).
-
 
 ## License
 
