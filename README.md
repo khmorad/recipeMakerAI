@@ -15,7 +15,6 @@ Live [Demo](https://youtu.be/erw31rS5tag) of this project
 - **Ingredient Input**: Users can manually input ingredients in the search bar to generate recipes.
 - **Object Detection**: Utilizes TensorFlow to detect ingredients from images uploaded by the user.
 - **Recipe Generation**: Fetches recipes based on input ingredients from the Edamam API.
-- **Time Estimate and Calories**: Uses OpenAI API to estimate the time required and the number of calories for each recipe.
 
 ## Known Limitations
 
