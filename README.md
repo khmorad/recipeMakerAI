@@ -20,7 +20,10 @@ Live [Demo](https://youtu.be/erw31rS5tag) of this project
 
 - **Ingredient Detection**: The current object detection functionality utilizes a YOLO pretrained model, which has limitations in accurately detecting a wide range of ingredients. It performs well with certain ingredients such as carrots, broccoli, and oranges, but struggles with others. We are actively working to improve detection accuracy by fine-tuning a VGG16 model. This process involves combining datasets from Kaggle to create a more comprehensive dataset that includes a broader range of ingredients. The goal is to enhance the model's ability to predict a wider variety of ingredients more reliably.
 
-- **Ongoing Work**: To address these limitations, we are working on a Colab notebook to fine-tune the VGG16 model. You can track the progress and access the notebook here: [Colab Notebook](https://colab.research.google.com/drive/1bT40bcBfwCy1rbB_OFP9M0LJhLYyjVtE?usp=sharing).
+- **Ongoing Work**: To address these limitations, we are working on a Colab notebook to fine-tune the VGG16 model. You can track the progress and access the notebook here: [Colab Notebook](https://colab.research.google.com/drive/1bT40bcBfwCy1rbB_OFP9M0LJhLYyjVtE?usp=sharing). 
+Below is our current results:
+<img width="488" alt="Screenshot 2024-09-05 at 16 08 50" src="https://github.com/user-attachments/assets/2c733b7f-31ea-485a-99c7-85ce0542077c">
+
 
 ## Technologies Used
 - **Flask**: For the backend web server.
