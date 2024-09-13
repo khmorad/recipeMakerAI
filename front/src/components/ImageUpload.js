@@ -1,50 +1,42 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import FileBase64 from "react-file-base64";
-import "@tensorflow/tfjs";
-import * as cocoSsd from "@tensorflow-models/coco-ssd";
 import "../stylings/ImageUpload.css";
 import Navbar from "./Navbar";
-import RecipeList from "./RecipeList";
+import RecipeList from "./RecipeList"; // Import RecipeList component
+
+const API_URL = "http://127.0.0.1:5000/api/upload";
 
 export default function UploadImage() {
   const [images, setImages] = useState([]);
   const [submitting, setSubmitting] = useState(false);
   const [detectedIngredients, setDetectedIngredients] = useState([]);
-  const [detectedResults, setDetectedResults] = useState([]);
-  const imageRefs = useRef([]);
 
   const handleFileUpload = (files) => {
     const newImages = files.map((file) => file.base64);
     setImages([...images, ...newImages]);
   };
 
-  const detectObjectsOnImage = async (imageElement) => {
-    const model = await cocoSsd.load();
-    const predictions = await model.detect(imageElement);
-    return predictions;
-  };
-
   const handleSubmit = async () => {
     setSubmitting(true);
-    const ingredients = new Set();
-    const results = [];
 
     try {
-      for (let i = 0; i < imageRefs.current.length; i++) {
-        const predictions = await detectObjectsOnImage(imageRefs.current[i]);
-        results.push({ image: images[i], predictions });
-        predictions.forEach(prediction => {
-          if (prediction.score > 0.5) {
-            ingredients.add(prediction.class);
-          }
-        });
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ images }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to submit images: ${response.status}`);
       }
 
-      setDetectedIngredients([...ingredients]);
-      setDetectedResults(results);
-      setImages([]); // Clear uploaded images after successful detection
+      const data = await response.json();
+      setDetectedIngredients(data.ingredients); // Set detected ingredients from API response
+      setImages([]); // Clear uploaded images after successful upload
     } catch (error) {
-      console.error("Error detecting objects:", error);
+      console.error("Error uploading images:", error);
     } finally {
       setSubmitting(false);
     }
@@ -65,7 +57,6 @@ export default function UploadImage() {
                 src={image}
                 alt={`Uploaded ingredient ${index}`}
                 className="uploaded-image-content"
-                ref={(el) => (imageRefs.current[index] = el)}
               />
             </div>
           ))}
@@ -77,26 +68,6 @@ export default function UploadImage() {
         >
           {submitting ? "Submitting..." : "Submit"}
         </button>
-        {detectedResults.length > 0 && (
-          <div className="detected-results-container">
-            {detectedResults.map((result, index) => (
-              <div key={index} className="detected-result">
-                <img
-                  src={result.image}
-                  alt={`Detected result ${index}`}
-                  className="detected-image-content"
-                />
-                <div className="detected-predictions">
-                  {result.predictions.map((prediction, idx) => (
-                    <div key={idx} className="prediction">
-                      {`${prediction.class} - ${(prediction.score * 100).toFixed(2)}%`}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
         {detectedIngredients.length > 0 && (
           <RecipeList ingredients={detectedIngredients} />
         )}
