@@ -18,9 +18,9 @@ Live [Demo](https://youtu.be/erw31rS5tag) of this project
 
 ## Known Limitations
 
-- **Ingredient Detection**: The current object detection functionality utilizes a YOLO pretrained model, which has limitations in accurately detecting a wide range of ingredients. It performs well with certain ingredients such as carrots, broccoli, and oranges, but struggles with others. We are actively working to improve detection accuracy by fine-tuning a VGG16 model. This process involves combining datasets from Kaggle to create a more comprehensive dataset that includes a broader range of ingredients. The goal is to enhance the model's ability to predict a wider variety of ingredients more reliably.
+- **Ingredient Detection**: The current object detection system accurately identifies 15 types of vegetables that the VGG-16 model was trained on but struggles with other ingredients. We are working to improve this by fine-tuning the VGG-16 model with a more comprehensive dataset, combining various Kaggle datasets to include a wider range of ingredients. Our goal is to enhance the model’s accuracy and reliability for a broader variety of ingredients.
 
-- **Ongoing Work**: To address these limitations, we are working on a Colab notebook to fine-tune the VGG16 model. You can track the progress and access the notebook here: [Colab Notebook](https://colab.research.google.com/drive/1bT40bcBfwCy1rbB_OFP9M0LJhLYyjVtE?usp=sharing). 
+- **Ongoing Work**: To address these limitations, we are working on a Colab notebook. You can track the progress and access the notebook here: [Colab Notebook](https://colab.research.google.com/drive/1bT40bcBfwCy1rbB_OFP9M0LJhLYyjVtE?usp=sharing). 
 
 Feel free to make a copy of the notebooks for your own use, and don’t hesitate to contact me at shizukat@uci.edu if you encounter any issues or have questions.
 
