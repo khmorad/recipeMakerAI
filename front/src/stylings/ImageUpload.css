@@ -1,60 +1,66 @@
 .upload-image-container {
-  margin: 20px auto; /* Center-align and add vertical margin */
+  margin: 20px auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #f9f9f9;
-  width: 80%; /* Set width to 80% of the viewport */
-  max-width: 1200px; /* Limit maximum width to 1200px */
-  box-sizing: border-box; /* Ensures padding and border are included in width */
+  width: 80%;
+  max-width: 1200px;
+  box-sizing: border-box;
 }
 
 .file-upload-container {
   display: flex;
-  justify-content: center; /* Center the file upload button */
-  margin-bottom: 20px; /* Add margin below the file upload button */
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .uploaded-images-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Gap between images */
-  justify-content: flex-start; /* Start alignment for flex */
+  gap: 20px;
+  justify-content: flex-start;
 }
 
-.uploaded-image, .detected-result {
-  width: 200px; /* Fixed width for each image container */
-  height: 200px; /* Fixed height for each image container */
-  overflow: hidden; /* Prevents images from overflowing */
-  position: relative; /* Ensures image corners are rounded */
-  border-radius: 5px; /* Adds rounded corners to the image */
-  border: 1px solid #ccc; /* Adds a border around the image container */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Adds a subtle shadow */
+.uploaded-image {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.uploaded-image img, .detected-result img {
-  width: 100%; /* Ensures image occupies the full container width */
-  height: 100%; /* Ensures image occupies the full container height */
-  display: block; /* Removes default inline styling */
-  border-radius: 5px; /* Adds rounded corners to the image */
-  object-fit: cover; /* Maintains aspect ratio and covers the container */
+.uploaded-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
-.detected-results-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* Gap between results */
-  justify-content: flex-start; /* Start alignment for flex */
-  margin-top: 20px; /* Add margin above the detected results */
-}
-
-.detected-predictions {
+.overlay {
   position: absolute;
-  bottom: 5px; /* Position the prediction at the bottom */
-  left: 5px; /* Position the prediction at the left */
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  color: #fff; /* White text color */
-  padding: 2px 5px; /* Padding around the text */
-  border-radius: 3px; /* Slightly rounded corners */
-  font-size: 12px; /* Smaller font size */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ingredient-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.ingredient-confidence {
+  font-size: 12px;
 }

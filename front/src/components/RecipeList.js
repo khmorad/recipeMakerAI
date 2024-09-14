@@ -7,14 +7,14 @@ const APP_ID = process.env.REACT_APP_EDAMAM_API_ID;
 const APP_KEY = process.env.REACT_APP_EDAMAM_API_KEY;
 // const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
 
-export default function RecipeList({ ingredients }) {
+export default function RecipeList({ ingredientLabels }) {
   const [recipes, setRecipes] = useState([]);
   // const [openAiResponses, setOpenAiResponses] = useState({});
 
   useEffect(() => {
     async function fetchRecipes() {
       try {
-        const query = ingredients.join(",");
+        const query = ingredientLabels.join(",");
         const encodedQuery = encodeURIComponent(query.trim());
         console.log(`Fetching recipes for: ${encodedQuery}`);
 
@@ -39,7 +39,7 @@ export default function RecipeList({ ingredients }) {
           // await fetchAllEstimatedTimes(fetchedRecipes);
         } else {
           console.log(`No recipes found for ${encodedQuery}`);
-          setRecipes([]);
+          setRecipes([]); // Clear the recipes if none are found
         }
       } catch (error) {
         console.error("Error fetching recipes from Edamam API:", error);
@@ -55,10 +55,10 @@ export default function RecipeList({ ingredients }) {
     //   setOpenAiResponses(responses);
     // }
 
-    if (ingredients.length > 0) {
+    if (ingredientLabels.length > 0) {
       fetchRecipes();
     }
-  }, [ingredients]);
+  }, [ingredientLabels]);
 
   // async function fetchOpenAiEstimatedTime(recipe) {
   //   const promptMessage = {
@@ -117,17 +117,26 @@ export default function RecipeList({ ingredients }) {
               <h3>{recipe.label}</h3>
               <img src={recipe.image} alt={recipe.label} />
               <p>by {recipe.description}</p>
+              {/* <p>
+                Calories: {Math.round(recipe.calories)} |
+                {openAiResponses[recipe.label] !== undefined && (
+                  <span>
+                    {" "}<FontAwesomeIcon icon={faClock} />{" "}
+                    {openAiResponses[recipe.label] + " min"}
+                  </span>
+                )}
+              </p> */}
               <div className="ingredients-list">
                 <p>Ingredients:</p>
                 <ul>
-                  {recipe.ingredientsList.map((ingredient, idx) => (
+                  {recipe.ingredientsList.map((ingredientLabels, idx) => (
                     <li key={idx}>
                       <div className="ingredient">
-                        {ingredient.text}
-                        {ingredient.weight && (
+                        {ingredientLabels.text}
+                        {ingredientLabels.weight && (
                           <span className="ingredient-weight">
                             {" "}
-                            ({Math.round(ingredient.weight)}g)
+                            ({Math.round(ingredientLabels.weight)}g)
                           </span>
                         )}
                       </div>

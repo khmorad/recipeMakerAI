@@ -65,9 +65,9 @@ def perform_object_detection(image_path, model, lb):
     predictions = model.predict(img_array)
     predicted_class_index = np.argmax(predictions, axis=1)[0]
     predicted_class = lb.classes_[predicted_class_index]
+    confidence_score = round(float(np.max(predictions)) * 100, 2)
 
-    return predicted_class
-
+    return predicted_class, confidence_score
 
 @app.route('/upload', methods=['POST'])
 def handle_upload():
@@ -104,24 +104,33 @@ def handle_upload():
             # Save image to disk for processing
             image_path = f'uploads/image_{index + 1}.jpg'
             cv2.imwrite(image_path, image)
+            logger.info("Saved image %d to %s", index + 1, image_path)
 
             # Perform object detection
             try:
-                label = perform_object_detection(image_path, model, lb)
-                detected_ingredients.append(label)
-                logger.info("Detected label for image %d: %s", index + 1, label)
+                label, confidence = perform_object_detection(image_path, model, lb)
+                detected_ingredients.append({"index": index, "label": label, "confidence": confidence})
+                logger.info("Detected label for image %d: %s with confidence %.2f", index + 1, label, confidence)
             except Exception as e:
                 logger.error("Error performing object detection on image %d: %s", index + 1, str(e))
                 return jsonify({"error": "Object detection failed"}), 500
 
-        # Remove duplicates and return
-        detected_ingredients = list(set(detected_ingredients))
-        logger.info("Detected ingredients: %s", detected_ingredients)
+        logger.info("Detected ingredients before sorting: %s", detected_ingredients)
 
-        return jsonify({"ingredients": detected_ingredients})
+        # Sort by index to ensure order matches the uploaded images
+        detected_ingredients_sorted = sorted(detected_ingredients, key=lambda x: x['index'])
+        detected_ingredients_result = [
+            {"label": item["label"], "confidence": item["confidence"]}
+            for item in detected_ingredients_sorted
+        ]
+
+        logger.info("Detected ingredients after sorting: %s", detected_ingredients_result)
+
+        return jsonify({"ingredients": detected_ingredients_result})
     except Exception as e:
         logger.error("Error handling upload: %s", str(e))
         return jsonify({"error": "Internal server error"}), 500
+
 
 
 if __name__ == '__main__':
