@@ -4,7 +4,7 @@ import "../stylings/ImageUpload.css";
 import Navbar from "./Navbar";
 import RecipeList from "./RecipeList"; // Import RecipeList component
 
-const API_URL = "http://127.0.0.1:5000/api/upload";
+const API_URL = "http://127.0.0.1:5000/upload";
 
 export default function UploadImage() {
   const [images, setImages] = useState([]);
@@ -33,8 +33,8 @@ export default function UploadImage() {
       }
 
       const data = await response.json();
-      setDetectedIngredients(data.ingredients); // Set detected ingredients from API response
-      setImages([]); // Clear uploaded images after successful upload
+      setDetectedIngredients(data.ingredients);
+      setImages([]);
     } catch (error) {
       console.error("Error uploading images:", error);
     } finally {

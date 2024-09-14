@@ -5,11 +5,11 @@ import "../stylings/RecipeList.css"; // Import the CSS file for styling
 
 const APP_ID = process.env.REACT_APP_EDAMAM_API_ID;
 const APP_KEY = process.env.REACT_APP_EDAMAM_API_KEY;
-const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
+// const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
 
 export default function RecipeList({ ingredients }) {
   const [recipes, setRecipes] = useState([]);
-  const [openAiResponses, setOpenAiResponses] = useState({});
+  // const [openAiResponses, setOpenAiResponses] = useState({});
 
   useEffect(() => {
     async function fetchRecipes() {
@@ -36,76 +36,76 @@ export default function RecipeList({ ingredients }) {
             ingredientsList: hit.recipe.ingredients,
           }));
           setRecipes(fetchedRecipes);
-          await fetchAllEstimatedTimes(fetchedRecipes);
+          // await fetchAllEstimatedTimes(fetchedRecipes);
         } else {
           console.log(`No recipes found for ${encodedQuery}`);
-          setRecipes([]); // Clear the recipes if none are found
+          setRecipes([]);
         }
       } catch (error) {
         console.error("Error fetching recipes from Edamam API:", error);
       }
     }
 
-    async function fetchAllEstimatedTimes(recipes) {
-      const responses = {};
-      for (const recipe of recipes) {
-        const estimatedTime = await fetchOpenAiEstimatedTime(recipe);
-        responses[recipe.label] = estimatedTime;
-      }
-      setOpenAiResponses(responses);
-    }
+    // async function fetchAllEstimatedTimes(recipes) {
+    //   const responses = {};
+    //   for (const recipe of recipes) {
+    //     const estimatedTime = await fetchOpenAiEstimatedTime(recipe);
+    //     responses[recipe.label] = estimatedTime;
+    //   }
+    //   setOpenAiResponses(responses);
+    // }
 
     if (ingredients.length > 0) {
       fetchRecipes();
     }
   }, [ingredients]);
 
-  async function fetchOpenAiEstimatedTime(recipe) {
-    const promptMessage = {
-      role: "system",
-      content: `Estimate the preparation time in minutes for the following meal. Here are the details: \n\nName: ${
-        recipe.label
-      }\nSource: ${recipe.description}\nCalories: ${Math.round(
-        recipe.calories
-      )}\nIngredients: ${recipe.ingredientsList
-        .map((ingredient) => ingredient.text)
-        .join(", ")}`,
-    };
+  // async function fetchOpenAiEstimatedTime(recipe) {
+  //   const promptMessage = {
+  //     role: "system",
+  //     content: `Estimate the preparation time in minutes for the following meal. Here are the details: \n\nName: ${
+  //       recipe.label
+  //     }\nSource: ${recipe.description}\nCalories: ${Math.round(
+  //       recipe.calories
+  //     )}\nIngredients: ${recipe.ingredientsList
+  //       .map((ingredient) => ingredient.text)
+  //       .join(", ")}`,
+  //   };
 
-    const apiRequestBody = {
-      model: "gpt-3.5-turbo",
-      messages: [promptMessage],
-    };
+  //   const apiRequestBody = {
+  //     model: "gpt-3.5-turbo",
+  //     messages: [promptMessage],
+  //   };
 
-    try {
-      const response = await fetch(
-        "https://api.openai.com/v1/chat/completions",
-        {
-          method: "POST",
-          headers: {
-            Authorization: "Bearer " + OPENAI_API_KEY,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(apiRequestBody),
-        }
-      );
-      if (!response.ok) {
-        throw new Error(`API request failed with status ${response.status}`);
-      }
-      const data = await response.json();
-      const chatbotResponse = data.choices[0].message.content;
+  //   try {
+  //     const response = await fetch(
+  //       "https://api.openai.com/v1/chat/completions",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           Authorization: "Bearer " + OPENAI_API_KEY,
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(apiRequestBody),
+  //       }
+  //     );
+  //     if (!response.ok) {
+  //       throw new Error(`API request failed with status ${response.status}`);
+  //     }
+  //     const data = await response.json();
+  //     const chatbotResponse = data.choices[0].message.content;
 
-      // Extracting the estimated preparation time
-      const estimatedTimeMatch = chatbotResponse.match(/(\d+)\s*minutes/);
-      const estimatedTime = estimatedTimeMatch
-        ? Math.ceil(parseInt(estimatedTimeMatch[1]) / 5) * 5
-        : "Unavailable";
-      return isNaN(estimatedTime) ? "Unavailable" : estimatedTime;
-    } catch (error) {
-      console.error("Error fetching response from OpenAI API:", error);
-      return "Unavailable";
-    }
-  }
+  //     // Extracting the estimated preparation time
+  //     const estimatedTimeMatch = chatbotResponse.match(/(\d+)\s*minutes/);
+  //     const estimatedTime = estimatedTimeMatch
+  //       ? Math.ceil(parseInt(estimatedTimeMatch[1]) / 5) * 5
+  //       : "Unavailable";
+  //     return isNaN(estimatedTime) ? "Unavailable" : estimatedTime;
+  //   } catch (error) {
+  //     console.error("Error fetching response from OpenAI API:", error);
+  //     return "Unavailable";
+  //   }
+  // }
 
   return (
     <div className="recipeContainer">
@@ -117,15 +117,6 @@ export default function RecipeList({ ingredients }) {
               <h3>{recipe.label}</h3>
               <img src={recipe.image} alt={recipe.label} />
               <p>by {recipe.description}</p>
-              <p>
-                Calories: {Math.round(recipe.calories)} |
-                {openAiResponses[recipe.label] !== undefined && (
-                  <span>
-                    {" "}<FontAwesomeIcon icon={faClock} />{" "}
-                    {openAiResponses[recipe.label] + " min"}
-                  </span>
-                )}
-              </p>
               <div className="ingredients-list">
                 <p>Ingredients:</p>
                 <ul>
