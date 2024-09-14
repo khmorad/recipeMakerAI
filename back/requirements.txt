@@ -1,0 +1,8 @@
+Flask==3.0.3
+Flask-Cors==4.0.1
+opencv-python==4.10.0.84
+numpy==1.26.4
+tensorflow==2.17.0
+scikit-learn==1.5.2
+gdown==5.2.0
+Pillow==10.4.0
