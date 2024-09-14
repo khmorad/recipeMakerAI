@@ -14,7 +14,7 @@ export default function UploadImage() {
   const handleFileUpload = (files) => {
     // Map the uploaded files to base64 strings and update state
     const newImages = files.map((file) => file.base64);
-    setImages([...images, ...newImages]);
+    setImages([...newImages, ...images]);
   };
 
   const handleSubmit = async () => {
