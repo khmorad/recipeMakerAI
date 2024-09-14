@@ -16,27 +16,26 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+# Configure CORS to allow both local and production domains
+CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "https://recepie-maker-ai.vercel.app"]}})
 
 # Paths for model and label binarizer
 MODEL_PATH = 'vgg16_final.keras'
 LB_PATH = 'label_binarizer.pkl'
 
-# File ID for downloading the model (from Google Drive)
+# Download the model from Google Drive
 FILE_ID = "1VhbC84GG5z5p-600r5CupVmjNo5m7rkp"
-
-# Function to download the model from Google Drive
 def download_model():
     url = f'https://drive.google.com/uc?id={FILE_ID}'
     gdown.download(url, MODEL_PATH, quiet=False)
 
-# Load or download the trained VGG16 model
+# Load trained VGG16 model
 def load_trained_model():
     if not os.path.exists(MODEL_PATH):
         download_model()
     return load_model(MODEL_PATH)
 
-# Load or save the label binarizer
+# Load and save the label binarizer
 def save_label_binarizer(lb):
     with open(LB_PATH, 'wb') as f:
         pickle.dump(lb, f)
@@ -57,7 +56,7 @@ def load_label_binarizer():
         save_label_binarizer(lb)
         return lb
 
-# Function to perform object detection using the VGG16 model
+# Perform object detection using the VGG16 model
 def perform_object_detection(image_path, model, lb):
     img = load_img(image_path, target_size=(224, 224))
     img_array = img_to_array(img) / 255.0
@@ -81,7 +80,6 @@ def handle_upload():
         images = data.get('images', [])
         logger.info("Number of images received: %d", len(images))
 
-        # Load model and label binarizer
         model = load_trained_model()
         lb = load_label_binarizer()
         if lb is None:
