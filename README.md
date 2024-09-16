@@ -1,5 +1,7 @@
 # RecipeMakerAI
+<img src="https://github.com/khmorad/csvStore/blob/main/re.png" alt="Clothing Store Logo" width="500"/>
 
+## Introduction
 RecipeMakeAI is a web application that allows users to input ingredients in a search bar to generate recipes based on those ingredients. The application also utilizes Flask and CNN models for object detection to identify ingredients from images. The recipes themselves are fetched from the Edamam API.
 
 ## Demo
