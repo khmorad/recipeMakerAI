@@ -7,14 +7,14 @@ const APP_ID = process.env.REACT_APP_EDAMAM_API_ID;
 const APP_KEY = process.env.REACT_APP_EDAMAM_API_KEY;
 // const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
 
-export default function RecipeList({ ingredientLabels }) {
+export default function RecipeList({ ingredients }) {
   const [recipes, setRecipes] = useState([]);
   // const [openAiResponses, setOpenAiResponses] = useState({});
 
   useEffect(() => {
     async function fetchRecipes() {
       try {
-        const query = ingredientLabels.join(",");
+        const query = ingredients.join(",");
         const encodedQuery = encodeURIComponent(query.trim());
         console.log(`Fetching recipes for: ${encodedQuery}`);
 
@@ -55,10 +55,10 @@ export default function RecipeList({ ingredientLabels }) {
     //   setOpenAiResponses(responses);
     // }
 
-    if (ingredientLabels.length > 0) {
+    if (ingredients.length > 0) {
       fetchRecipes();
     }
-  }, [ingredientLabels]);
+  }, [ingredients]);
 
   // async function fetchOpenAiEstimatedTime(recipe) {
   //   const promptMessage = {
@@ -129,14 +129,14 @@ export default function RecipeList({ ingredientLabels }) {
               <div className="ingredients-list">
                 <p>Ingredients:</p>
                 <ul>
-                  {recipe.ingredientsList.map((ingredientLabels, idx) => (
+                  {recipe.ingredientsList.map((ingredients, idx) => (
                     <li key={idx}>
                       <div className="ingredient">
-                        {ingredientLabels.text}
-                        {ingredientLabels.weight && (
+                        {ingredients.text}
+                        {ingredients.weight && (
                           <span className="ingredient-weight">
                             {" "}
-                            ({Math.round(ingredientLabels.weight)}g)
+                            ({Math.round(ingredients.weight)}g)
                           </span>
                         )}
                       </div>
