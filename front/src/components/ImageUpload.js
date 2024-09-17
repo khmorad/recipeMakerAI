@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import FileBase64 from "react-file-base64";
 import "../stylings/ImageUpload.css";
 import Navbar from "./Navbar";
@@ -28,7 +29,6 @@ export default function UploadImage() {
         },
         body: JSON.stringify({ images }),
       });
-      console.log("Detected ingredients:", detectedIngredients);
 
       if (!response.ok) {
         throw new Error(`Failed to submit images: ${response.status}`);
@@ -44,9 +44,14 @@ export default function UploadImage() {
     }
   };
 
+  // Log the state when it's updated
+  useEffect(() => {
+    console.log("Detected ingredients after update:", detectedIngredients);
+  }, [detectedIngredients]);
+
   // Extract labels from detected ingredients
   const ingredientLabels = detectedIngredients.map(
-    (ingredient) => ingredient[0]
+    (ingredient) => ingredient["label"]
   );
 
   console.log("Ingredient labels passed to RecipeList:", ingredientLabels);
@@ -74,9 +79,11 @@ export default function UploadImage() {
                   />
                   {ingredient && (
                     <div className="overlay">
-                      <span className="ingredient-label">{ingredient[0]}</span>
+                      <span className="ingredient-label">
+                        {ingredient["label"]}
+                      </span>
                       <span className="ingredient-confidence">
-                        {ingredient[1]}%
+                        {ingredient["confidence"]}%
                       </span>
                     </div>
                   )}
@@ -93,7 +100,7 @@ export default function UploadImage() {
           {submitting ? "Submitting..." : "Submit"}
         </button>
         {ingredientLabels.length > 0 && (
-          <RecipeList ingredientLabels={ingredientLabels} />
+          <RecipeList ingredients={ingredientLabels} />
         )}
       </div>
     </div>
