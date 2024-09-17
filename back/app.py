@@ -75,7 +75,6 @@ def handle_upload():
         logger.info("Received request to upload")
 
         data = request.get_json()
-        logger.info("Request data: %s", data)
 
         images = data.get('images', [])
         logger.info("Number of images received: %d", len(images))
