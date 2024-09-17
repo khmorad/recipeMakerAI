@@ -56,6 +56,9 @@ def load_label_binarizer():
         save_label_binarizer(lb)
         return lb
 
+model = load_trained_model()
+lb = load_label_binarizer()
+
 # Perform object detection using the VGG16 model
 def perform_object_detection(image_path, model, lb):
     img = load_img(image_path, target_size=(224, 224))
@@ -79,8 +82,6 @@ def handle_upload():
         images = data.get('images', [])
         logger.info("Number of images received: %d", len(images))
 
-        model = load_trained_model()
-        lb = load_label_binarizer()
         if lb is None:
             logger.error("LabelBinarizer not found")
             return jsonify({"error": "LabelBinarizer not found"}), 500
