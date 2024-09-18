@@ -22,7 +22,7 @@ Live [Demo](https://youtu.be/erw31rS5tag) of this project
 
 ## Known Limitations
 
-- **Ingredient Detection**: We have trained a model on a Kaggle dataset containing 15 classes of vegetables, achieving precision, recall, and F1 scores of approximately 99% to 100% for each class. However, the model is limited to detecting only the ingredients present in this dataset. To address this, we are working on training the model with additional datasets and combining them to improve its ability to detect a wider range of ingredients accurately.
+- **Ingredient Detection**: We have fine-tuned and trained a VGG-16 model on a Kaggle dataset containing 15 classes of vegetables, achieving precision, recall, and F1 scores of approximately 99% to 100% for each class. However, the model is limited to detecting only the ingredients present in this dataset. To address this, we are working on training the model with additional datasets and combining them to improve its ability to detect a wider range of ingredients accurately.
 - **Ongoing Work**: To address these limitations, we are working on a Colab notebook. You can track the progress and access the notebook here: [Colab Notebook](https://colab.research.google.com/drive/1bT40bcBfwCy1rbB_OFP9M0LJhLYyjVtE?usp=sharing). 
 
 Feel free to make a copy of the notebooks for your own use, and don’t hesitate to contact me at shizukat@uci.edu if you encounter any issues or have questions.
