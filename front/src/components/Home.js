@@ -3,12 +3,15 @@ import Navbar from './Navbar'
 import '../stylings/Home.css'
 import Intro from './Intro'
 import IngredientInputPage from "./IngredientInputPage";
+
 export default function Home() {
   return (
-    <>
-    <Navbar/>
-    <Intro/>
-    <IngredientInputPage />
-    </>
+    <div className="home-container">
+      <Navbar/>
+      <div className="content-wrapper">
+        <Intro/>
+        <IngredientInputPage />
+      </div>
+    </div>
   );
 }
